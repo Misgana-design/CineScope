@@ -1,9 +1,17 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <ul>
-      <li>Home</li>
-      <li>Search</li>
-      <li>Favorites</li>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to='/Search'>Search</Link>
+      </li>
+      <li>
+        <Link to="/Favorites">Favorites</Link>
+      </li>
     </ul>
   );
 }
