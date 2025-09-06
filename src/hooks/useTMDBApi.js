@@ -1,11 +1,15 @@
 import axios from "axios";
 
-export default async function fetchTrending() {
-  const API_Key = import.meta.VITE_TMDB_API_KEY;
-  const BASE_URL = "https://api.themoviedb.org/3";
-  const response = await axios.get(
-    `${BASE_URL}/trending/movie/week?api_key=${API_Key}`
-  );
-  console.log(response.data.results);
+const API_KEY = "f5d9908a0cd5041151ce52978766bfea";
+const BASE_URL = "https://api.themoviedb.org/3";
+
+export default function fetchTrending() {
+  axios
+    .get(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`)
+    .then((res) => {
+      return res.data.results;
+    })
+    .catch((error) => {
+      return "Error occurred", error;
+    });
 }
-fetchTrending()
