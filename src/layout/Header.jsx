@@ -5,8 +5,8 @@ import "./Header.css";
 export default function Header() {
   return (
     <>
-      <main className="bg-gray-900 text-white flex justify-between p-6 ">
-        <header className="ml-20 text-3xl">🎬CineScope</header>
+      <main className="bg-black text-white flex justify-between p-6 ">
+        <header className="ml-20 text-green-400 text-3xl">🎬CineScope</header>
         <ul className="flex gap-20 pr-5  text-xl text-shadow-sm text-shadow">
           <li>
             <Link to="/">Home</Link>
