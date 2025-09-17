@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchTrending, ORIGINAL_IMAGE_BASE_URL } from "../hooks/useTMDBApi";
 import MovieCard from "../components/MovieCard";
+import Footer from "../layout/Footer";
 
 export default function HomePage() {
   const {
@@ -9,20 +10,25 @@ export default function HomePage() {
     error,
     isFetching,
   } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["Trending-movies"],
     queryFn: fetchTrending,
     staleTime: 1000 * 60,
     refetchOnWindowFocus: true,
     retry: 3,
   });
+  console.log(isLoading);
+
   if (isLoading)
-    return <p className="text-white text-center text-2xl">Loading...</p>;
+    return <p className="mt-30 text-white text-center text-2xl">Loading...</p>;
   if (error)
     return (
-      <p className="text-white text-center text-2xl">Something went wrong</p>
+      <p className="mt-30 text-white text-center text-2xl">
+        Something went wrong
+      </p>
     );
   const heroMovies = movie[0];
-  const restMovies = movie.slice(1);
+  const restMovies = movie.slice(1, -1);
+
   return (
     <>
       {isFetching && <p>Background refreshing</p>}
@@ -57,13 +63,14 @@ export default function HomePage() {
         )}
       </div>
 
-      <div className="text-white font-extrabold text-3xl">
+      <div className="text-white font-extrabold text-4xl ml-28 mt-12">
         Trending This Week
-        <div>
+        <div className="grid grid-cols-3 sm:grid-cols-3 gap-6 w-250 mt-5 aspect-video">
           {restMovies.map((restMovie) => (
             <MovieCard key={restMovie.id} movie={restMovie} />
           ))}
         </div>
+        <Footer />
       </div>
     </>
   );
