@@ -27,7 +27,7 @@ export default function HomePage() {
       </p>
     );
   const heroMovies = movie[0];
-  const restMovies = movie.slice(1, -1);
+  const restMovies = movie;
 
   return (
     <>
@@ -65,7 +65,7 @@ export default function HomePage() {
 
       <div className="text-white font-extrabold text-4xl ml-28 mt-12">
         Trending This Week
-        <div className="grid grid-cols-3 sm:grid-cols-3 gap-6 w-250 mt-5 aspect-video">
+        <div className="grid grid-cols-5 gap-6 w-250 mt-5 aspect-video">
           {restMovies.map((restMovie) => (
             <MovieCard key={restMovie.id} movie={restMovie} />
           ))}
