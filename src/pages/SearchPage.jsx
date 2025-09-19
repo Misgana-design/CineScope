@@ -8,6 +8,7 @@ export default function SearchPage() {
           </h1>
           <input
             type="text"
+            name="movie"
             placeholder="🔍︎Search for movies"
             className="mt-25 ml-5 pl-3 text-black font-medium rounded-4xl focus:outline-none focus:border-2 focus:border-green-600 bg-white w-100 h-12"
           />
