@@ -1,4 +1,5 @@
 import axios from "axios";
+import SearchBar from "../components/SearchBar";
 
 const API_KEY = "f5d9908a0cd5041151ce52978766bfea";
 const BASE_URL = "https://api.themoviedb.org/3";
