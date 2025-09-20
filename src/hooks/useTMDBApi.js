@@ -16,4 +16,16 @@ export async function fetchTrending() {
   }
 }
 
+export async function searchMovies(query) {
+  try {
+    const res = await axios.get(
+      `${BASE_URL}/search/movie/?api_key=${API_KEY}&query=${query}`
+    );
+    console.log(query);
+    return res.data;
+  } catch (error) {
+    console.error("Error occured", error);
+  }
+}
+
 fetchTrending();
