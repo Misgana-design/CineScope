@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import searchMovies from "../hooks/useTMDBApi.js";
+import SearchBar from "../components/SearchBar.jsx";
 
 export default function SearchPage() {
   const [query, setQuery] = useState("");
@@ -13,4 +14,5 @@ export default function SearchPage() {
     queryFn: ({ queryKey }) => searchMovies(queryKey[1]),
     enabled: query.length > 1,
   });
+  return <SearchBar query={query} setQuery={setQuery} />;
 }
