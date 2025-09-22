@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import searchMovies from "../hooks/useTMDBApi.js";
 
 export default function SearchPage() {
+  const [query, setQuery] = useState("");
   const {
     data: movie = [],
     isLoading,
