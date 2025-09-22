@@ -1,7 +1,4 @@
-export default function SearchBar() {
-  function handleSearch(data) {
-    const result = data.get("movie");
-  }
+export default function SearchBar({ query, setQuery, handleSearch }) {
   return (
     <>
       <div className="flex justify-center">
@@ -13,9 +10,17 @@ export default function SearchBar() {
             <input
               type="text"
               name="movie"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
               placeholder="🔍︎Search for movies"
               className="mt-25 ml-5 pl-3 text-black font-medium rounded-4xl focus:outline-none focus:border-2 focus:border-green-600 bg-white w-100 h-12"
             />
+            <button
+              type="submit"
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded"
+            >
+              Search
+            </button>
           </form>
         </div>
       </div>
