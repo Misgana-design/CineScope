@@ -22,7 +22,7 @@ export default function HomePage() {
     return <p className="mt-30 text-white text-center text-2xl">Loading...</p>;
   if (error)
     return (
-      <p className="mt-30 text-white text-center text-2xl">
+      <p className="mt-30 text-red-500 text-center text-2xl">
         Something went wrong
       </p>
     );
