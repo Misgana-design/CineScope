@@ -21,7 +21,7 @@ export async function searchMovies(query) {
     const res = await axios.get(
       `${BASE_URL}/search/movie/?api_key=${API_KEY}&query=${query}`
     );
-    return res.data;
+    return res.data.results;
   } catch (error) {
     console.error("Error occured", error);
   }
