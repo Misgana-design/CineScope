@@ -16,7 +16,6 @@ export default function HomePage() {
     refetchOnWindowFocus: true,
     retry: 3,
   });
-  console.log(isLoading);
 
   if (isLoading)
     return <p className="mt-30 text-white text-center text-2xl">Loading...</p>;
