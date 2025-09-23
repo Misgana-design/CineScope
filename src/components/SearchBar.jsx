@@ -6,7 +6,7 @@ export default function SearchBar({ query, setQuery, handleSearch }) {
           <h1 className=" text-green-400 font-extrabold text-7xl">
             🎬CineScope
           </h1>
-          <form action={handleSearch}>
+          <form onSubmit={handleSearch}>
             <input
               type="text"
               name="movie"
