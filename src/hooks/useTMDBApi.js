@@ -26,5 +26,3 @@ export async function searchMovies(query) {
     console.error("Error occured", error);
   }
 }
-
-
