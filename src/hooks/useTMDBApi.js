@@ -10,7 +10,7 @@ export async function fetchTrending() {
     const res = await axios.get(
       `${BASE_URL}/trending/movie/week?api_key=${API_KEY}`
     );
-    return res.data.results;
+    return res.data.results || []; //If the data is not found return an empty array to make handling easy later
   } catch (error) {
     console.error("Error ocurred", error);
   }
@@ -19,10 +19,13 @@ export async function fetchTrending() {
 export async function searchMovies(query) {
   try {
     const res = await axios.get(
-      `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`
+      `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
+        query
+      )}`
     );
     return res.data.results;
   } catch (error) {
     console.error("Error occured", error);
+    throw error; //Rethrow error for react query
   }
 }
