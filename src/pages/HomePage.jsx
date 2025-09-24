@@ -31,7 +31,7 @@ export default function HomePage() {
   return (
     <>
       {isFetching && <p>Background refreshing</p>}
-      <div className="mt-6">
+      <div className="mt-25">
         {heroMovies && (
           <>
             <div className="flex justify-between items-center ">
@@ -41,12 +41,12 @@ export default function HomePage() {
                   backgroundSize: "cover",
                   backgroundPosition: "center center",
                   width: "100%",
-                  aspectRatio: "16 / 9",
+                  aspectRatio: "4 / 3",
                   maxHeight: "500px",
                 }}
                 className="shadow-2xl shadow-gray-700 ml-28 object-cover"
               ></div>
-              <div className="p-28">
+              <div className="p-10">
                 <p className="bg-linear-to-r from-blue-500 to-green-500 text-transparent bg-clip-text text-7xl font-extrabold">
                   {heroMovies.title}
                 </p>
