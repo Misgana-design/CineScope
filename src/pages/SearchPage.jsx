@@ -18,27 +18,21 @@ export default function SearchPage() {
   const movieResult = movie[0];
   const movieResults = movie.slice(1);
 
-  function handleSearch(formData) {
-    const query = formData.get("movie");
-    console.log(query);
-  }
-
   if (isLoading)
     return <p className="mt-30 text-white text-center text-2xl">Loading...</p>;
   if (error)
     return (
       <p className="mt-30 text-red-500 text-center text-2xl">
-        Something went wrong
+        Something went wrong: {error.message}
       </p>
     );
   return (
     <div>
+      {query && movie.length === 0 && (
+        <p className="text-white">No results found</p>
+      )}
       <div>
-        <SearchBar
-          query={query}
-          setQuery={setQuery}
-          handleSearch={handleSearch}
-        />
+        <SearchBar setQuery={setQuery} />
       </div>
       <div></div>
     </div>
