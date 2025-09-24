@@ -13,6 +13,7 @@ export async function fetchTrending() {
     return res.data.results || []; //If the data is not found return an empty array to make handling easy later
   } catch (error) {
     console.error("Error ocurred", error);
+    throw error;
   }
 }
 
@@ -23,7 +24,7 @@ export async function searchMovies(query) {
         query
       )}`
     );
-    return res.data.results;
+    return res.data.results || []; //If the data is not found return an empty array to make handling easy later
   } catch (error) {
     console.error("Error occured", error);
     throw error; //Rethrow error for react query
