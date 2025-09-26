@@ -28,13 +28,25 @@ export default function SearchPage() {
     );
   return (
     <div>
-      {query && movie.length === 0 && (
-        <p className="text-white">No results found</p>
-      )}
       <div>
         <SearchBar setQuery={setQuery} />
       </div>
-      <div></div>
+      {query && movie.length === 0 && (
+        <p className="text-center mt-6 text-9xl text-white">No results found</p>
+      )}
+      <div>
+        {movie.length > 0 && (
+          <p
+            className=""
+            style={{
+              backgroundImage: `url(${ORIGINAL_IMAGE_BASE_URL}${movieResult.backdrop_path})`,
+              backgroundSize: "cover",
+              width: "100px",
+              height: "100px",
+            }}
+          ></p>
+        )}
+      </div>
     </div>
   );
 }
