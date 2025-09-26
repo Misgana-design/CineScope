@@ -1,8 +1,12 @@
+import { createContext } from "react";
+
 export default function SearchBar({ setQuery }) {
   function handleSearch(event) {
     event.preventDefault();
-    const formData = new FormData(event.target);
+    const formElement = event.target;
+    const formData = new FormData(formElement);
     const data = formData.get("movie");
+    formElement.reset();
     if (data.trim()) {
       setQuery(data.trim());
     }
@@ -23,7 +27,7 @@ export default function SearchBar({ setQuery }) {
               type="text"
               name="movie"
               placeholder="🔍︎ Search for movies"
-              className="mt-20 ml-6 pl-3 text-black font-medium rounded-4xl focus:outline-none focus:border-2 focus:border-green-600 bg-white w-100 h-12"
+              className="mt-20 ml-6 pl-3 text-black font-medium rounded-4xl focus:outline-none focus:border-2 focus:border-green-600 bg-white w-90 h-12"
             />
           </form>
         </div>
