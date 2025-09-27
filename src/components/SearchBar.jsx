@@ -29,6 +29,7 @@ export default function SearchBar({ setQuery }) {
               placeholder="🔍︎ Search for movies"
               className="mt-20 ml-6 pl-3 text-black font-medium rounded-4xl focus:outline-none focus:border-2 focus:border-green-600 bg-white w-90 h-12"
             />
+            <button className="bg-blue-500">Search</button>
           </form>
         </div>
       </div>
