@@ -47,7 +47,7 @@ export default function HomePage() {
                 className="shadow-2xl shadow-gray-700 ml-28 object-cover"
               ></div>
               <div className="p-10">
-                <p className="bg-linear-to-r from-blue-500 to-green-500 text-transparent bg-clip-text text-7xl font-extrabold">
+                <p className="bg-linear-to-r from-blue-500 to-green-500 text-transparent bg-clip-text text-5xl font-extrabold">
                   {heroMovies.title}
                 </p>
                 <p className="text-white w-100 mt-4 font-mono">
