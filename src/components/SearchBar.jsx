@@ -1,5 +1,3 @@
-import { createContext } from "react";
-
 export default function SearchBar({ setQuery }) {
   function handleSearch(event) {
     event.preventDefault();
