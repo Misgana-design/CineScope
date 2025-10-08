@@ -1,14 +1,24 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
-import { saveToLocalStorage } from "../hooks/useLocalStorage";
-function favoritesReducer(state, action) {}
+import {
+  saveToLocalStorage,
+  loadFromLocalStorage,
+} from "../hooks/useLocalStorage";
 
-function loadFromLocalStorage() {
-  try {
-    const data = localStorage.getItem("favorites");
-    return data ? JSON.parse(data) : [];
-  } catch (error) {
-    console.error("Error loading favorites from local storage", error);
-    return [];
+// Reducer Function
+function favoritesReducer(state, action) {
+  
+  switch (action.type) {
+    case "ADD_FAVORTIE":
+      if (state.some((item) => item.id === action.payload.id)) {
+        return state;
+      }
+      return [...state, action.payload];
+
+    case "REMOVE_FAVORITE":
+      return state.filter((item) => item !== action.payload);
+
+    default:
+      return state;
   }
 }
 
