@@ -1,39 +1,16 @@
-// src/hooks/useLocalStorage.js
-import { useState, useCallback } from "react";
+export function loadFromLocalStorage() {
+  try {
+    const data = localStorage.getItem("favorites");
+    return JSON.parse(data);
+  } catch (error) {
+    console.error("Error loading favorites from local storage", error);
+  }
+}
 
-/**
- * useLocalStorage(key, initialValue)
- * - Returns [value, setValue]
- * - setValue can accept either a value or an updater function (like setState).
- * - Keeps localStorage in sync whenever state changes via setValue.
- */
-export default function useLocalStorage(key, initialValue) {
-  // read once, lazily
-  const [storedValue, setStoredValue] = useState(() => {
-    try {
-      const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
-    } catch (err) {
-      console.error("useLocalStorage read error:", err);
-      return initialValue;
-    }
-  });
-
-  const setValue = useCallback(
-    (valueOrFn) => {
-      setStoredValue((prev) => {
-        const valueToStore =
-          typeof valueOrFn === "function" ? valueOrFn(prev) : valueOrFn;
-        try {
-          window.localStorage.setItem(key, JSON.stringify(valueToStore));
-        } catch (err) {
-          console.error("useLocalStorage write error:", err);
-        }
-        return valueToStore;
-      });
-    },
-    [key]
-  );
-
-  return [storedValue, setValue];
+export function saveToLocalStorage(data) {
+  try {
+    localStorage.setItem("favorites", JSON.stringify(data));
+  } catch (error) {
+    console.error("Erro saving favorites to local storage", error);
+  }
 }
