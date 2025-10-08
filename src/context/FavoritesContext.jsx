@@ -12,14 +12,6 @@ function loadFromLocalStorage() {
   }
 }
 
-function saveToLocalStorage(data) {
-  try {
-    localStorage.setItem("favorites", JSON.stringify(data));
-  } catch (error) {
-    console.error("Error saving favorites to local storage", error);
-  }
-}
-
 const FavoritesContext = createContext();
 
 export function FavoritesProvider({ children }) {
