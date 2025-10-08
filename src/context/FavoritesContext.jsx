@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
-
+import { saveToLocalStorage } from "../hooks/useLocalStorage";
 function favoritesReducer(state, action) {}
 
 function loadFromLocalStorage() {
@@ -41,9 +41,11 @@ export function FavoritesProvider({ children }) {
     dispatch({ type: "REMOVE_FAVORITE", payload: id });
   };
 
-  <FavoritesContext.Provider value={{ addToFavorites, removeFromFavorites }}>
-    {children}
-  </FavoritesContext.Provider>;
+  return (
+    <FavoritesContext.Provider value={{ addToFavorites, removeFromFavorites }}>
+      {children}
+    </FavoritesContext.Provider>
+  );
 }
 
 export function useStorage() {}
