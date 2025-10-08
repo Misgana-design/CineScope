@@ -40,4 +40,10 @@ export function FavoritesProvider({ children }) {
   const removeFromFavorites = (id) => {
     dispatch({ type: "REMOVE_FAVORITE", payload: id });
   };
+
+  <FavoritesContext.Provider value={{ addToFavorites, removeFromFavorites }}>
+    {children}
+  </FavoritesContext.Provider>;
 }
+
+export function useStorage() {}
