@@ -6,7 +6,6 @@ import {
 
 // Reducer Function
 function favoritesReducer(state, action) {
-  
   switch (action.type) {
     case "ADD_FAVORTIE":
       if (state.some((item) => item.id === action.payload.id)) {
@@ -43,11 +42,21 @@ export function FavoritesProvider({ children }) {
     dispatch({ type: "REMOVE_FAVORITE", payload: id });
   };
 
+  const isFavorites = (item) => {
+    return favorites.some((favorite) => favorite.id === item.id);
+  };
+
   return (
-    <FavoritesContext.Provider value={{ addToFavorites, removeFromFavorites }}>
+    <FavoritesContext.Provider value={{ addToFavorites, removeFromFavorites, isFavorites }}>
       {children}
     </FavoritesContext.Provider>
   );
 }
 
-export function useStorage() {}
+export function useStorage() {
+  const context = useContext(FavoritesContext);
+  if (!context) {
+    throw new Error("useFavorites must be used within a FavoritesProvider");
+  }
+  return context;
+}
