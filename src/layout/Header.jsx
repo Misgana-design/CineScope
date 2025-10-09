@@ -3,7 +3,7 @@ import "./Header.css";
 export default function Header() {
   return (
     <>
-      <main className="fixed top-0 left-0 right-0 bg-black text-white flex justify-between p-8 ">
+      <main className="fixed top-0 left-0 right-0 z-10 bg-black text-white flex justify-between p-8 ">
         <header className="ml-20 text-green-400 text-3xl font-extrabold font-mono">
           🎬CineScope
         </header>
