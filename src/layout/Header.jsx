@@ -7,7 +7,7 @@ export default function Header() {
         <header className="ml-20 text-green-400 text-3xl font-extrabold font-mono">
           🎬CineScope
         </header>
-        <ul className="flex gap-20 pr-5  text-xl text-shadow-sm text-shadow">
+        <ul className="flex gap-20 pr-5 text-xl text-shadow-sm text-shadow">
           <li>
             <Link to="/" className="py-2 px-2 hover:bg-gray-700">
               Home
