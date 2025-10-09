@@ -71,7 +71,9 @@ export default function HomePage() {
             {restMovies.map((restMovie) => {
               return (
                 <>
-                  <MovieCard key={restMovie.id} movie={restMovie} />
+                  <div className="hover:scale-110 duration-150 hover:cursor-pointer">
+                    <MovieCard key={restMovie.id} movie={restMovie} />
+                  </div>
                 </>
               );
             })}
@@ -86,7 +88,7 @@ export default function HomePage() {
                       ? removeFromFavorites(restMovie.id)
                       : addToFavorites(restMovie);
                   }}
-                  className="mr-30 bg-gradient-to-r from-blue-500 to-green-500 rounded-full hover:cursor-pointer"
+                  className="hover:scale-110 duration-150 mr-30 bg-gradient-to-r from-blue-500 to-green-500 rounded-full hover:cursor-pointer"
                 >
                   {favorite ? "♥" : "♡"}
                 </button>
