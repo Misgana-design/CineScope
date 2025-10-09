@@ -2,8 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchTrending, ORIGINAL_IMAGE_BASE_URL } from "../hooks/useTMDBApi";
 import MovieCard from "../components/MovieCard";
 import Footer from "../layout/Footer";
+import { useFavorites } from "../context/FavoritesContext";
 
 export default function HomePage() {
+  const { isFavorites, addToFavorites, removeFromFavorites } = useFavorites();
   const {
     data: movie = [],
     isLoading,
@@ -64,10 +66,33 @@ export default function HomePage() {
 
       <div className="text-white font-extrabold text-4xl ml-28 mt-12">
         Trending This Week
-        <div className="grid grid-cols-5 gap-6 w-250 mt-5 aspect-video ♥ ♡">
-          {restMovies.map((restMovie) => (
-            <MovieCard key={restMovie.id} movie={restMovie} />
-          ))}
+        <div className="relative">
+          <div className="grid grid-cols-5 gap-6 w-250 mt-5 aspect-video">
+            {restMovies.map((restMovie) => {
+              return (
+                <>
+                  <MovieCard key={restMovie.id} movie={restMovie} />
+                </>
+              );
+            })}
+          </div>
+          <div className="grid w-250 grid-cols-5 gap-y-65 absolute bottom-5 right-10 ">
+            {restMovies.map((restMovie) => {
+              const favorite = isFavorites(restMovie);
+              return (
+                <button
+                  onClick={() => {
+                    favorite
+                      ? removeFromFavorites(restMovie.id)
+                      : addToFavorites(restMovie);
+                  }}
+                  className="mr-30 bg-gradient-to-r from-blue-500 to-green-500 rounded-full hover:cursor-pointer"
+                >
+                  {favorite ? "♥" : "♡"}
+                </button>
+              );
+            })}
+          </div>
         </div>
         <Footer />
       </div>
