@@ -66,32 +66,26 @@ export default function HomePage() {
 
       <div className="text-white font-extrabold text-4xl ml-28 mt-12">
         Trending This Week
-        <div className="relative">
+        <div>
           <div className="grid grid-cols-5 gap-6 w-250 mt-5 aspect-video">
-            {restMovies.map((restMovie) => {
-              return (
-                <>
-                  <div className="hover:scale-110 duration-150 hover:cursor-pointer">
-                    <MovieCard key={restMovie.id} movie={restMovie} />
-                  </div>
-                </>
-              );
-            })}
-          </div>
-          <div className="grid w-250 grid-cols-5 gap-y-65 absolute bottom-5 right-10 ">
             {restMovies.map((restMovie) => {
               const favorite = isFavorites(restMovie);
               return (
-                <button
-                  onClick={() => {
-                    favorite
-                      ? removeFromFavorites(restMovie.id)
-                      : addToFavorites(restMovie);
-                  }}
-                  className="hover:scale-110 duration-150 mr-30 bg-gradient-to-r from-blue-500 to-green-500 rounded-full hover:cursor-pointer"
-                >
-                  {favorite ? "♥" : "♡"}
-                </button>
+                <>
+                  <div className="relative hover:scale-110 duration-150 hover:cursor-pointer">
+                    <MovieCard key={restMovie.id} movie={restMovie} />
+                    <button
+                      onClick={() => {
+                        favorite
+                          ? removeFromFavorites(restMovie.id)
+                          : addToFavorites(restMovie);
+                      }}
+                      className="absolute bottom-2 left-35 hover:scale-110 duration-150 bg-gradient-to-r from-blue-500 to-green-500 rounded-full hover:cursor-pointer px-3"
+                    >
+                      {favorite ? "♥" : "♡"}
+                    </button>
+                  </div>
+                </>
               );
             })}
           </div>
