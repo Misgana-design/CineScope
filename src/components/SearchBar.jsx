@@ -4,7 +4,6 @@ export default function SearchBar({ setQuery }) {
     const formElement = event.target;
     const formData = new FormData(formElement);
     const data = formData.get("movie");
-    formElement.reset();
     if (data.trim()) {
       setQuery(data.trim());
     }
