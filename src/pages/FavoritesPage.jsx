@@ -2,7 +2,7 @@ import { useFavorites } from "../context/FavoritesContext";
 import { IMAGE_BASE_URL } from "../hooks/useTMDBApi";
 
 export default function FavoritesPage() {
-  const { favorites, isFavorites } = useFavorites();
+  const { favorites } = useFavorites();
   if (favorites.length === 0)
     return (
       <p className="m-60 font-bold text-5xl text-center bg-linear-to-r from-blue-500 from-40% to-green-500 to-60% text-transparent bg-clip-text">
