@@ -1,6 +1,6 @@
 export function loadFromLocalStorage() {
   try {
-    const data = localStorage.getItem("favorites");
+    const data = window.localStorage.getItem("favorites");
     return JSON.parse(data);
   } catch (error) {
     console.error("Error loading favorites from local storage", error);
@@ -9,8 +9,8 @@ export function loadFromLocalStorage() {
 
 export function saveToLocalStorage(data) {
   try {
-    localStorage.setItem("favorites", JSON.stringify(data));
+    window.localStorage.setItem("favorites", JSON.stringify(data));
   } catch (error) {
-    console.error("Erro saving favorites to local storage", error);
+    console.error("Error saving favorites to local storage", error);
   }
 }
