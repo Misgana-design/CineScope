@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import {
-  searchMovies,
-  ORIGINAL_IMAGE_BASE_URL,
-  IMAGE_BASE_URL,
-} from "../hooks/useTMDBApi.js";
+import { searchMovies, IMAGE_BASE_URL } from "../hooks/useTMDBApi.js";
 import SearchBar from "../components/SearchBar.jsx";
 import Footer from "../layout/Footer.jsx";
 
@@ -43,9 +39,12 @@ export default function SearchPage() {
             No results found
           </p>
         )}
-        <p className="text-center text-4xl mt-4 bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text font-extrabold">
-          Your results for the movie {query}
-        </p>
+        {query && (
+          <p className="text-center text-4xl mt-4 bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text font-extrabold">
+            Your results for the movie {query}
+          </p>
+        )}
+
         <div className="grid grid-cols-5 gap-6 w-250 ml-28 mt-15">
           {movies.length > 0 &&
             movies
