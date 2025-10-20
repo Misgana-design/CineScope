@@ -17,6 +17,18 @@ export async function fetchTrending() {
   }
 }
 
+export async function trendingTv() {
+  try {
+    const res = await axios.get(
+      `${BASE_URL}/trending/tv/week?api_key=${API_KEY}`
+    );
+    return res.data.results || [];
+  } catch (error) {
+    console.error("Error occured", error);
+    throw error;
+  }
+}
+
 export async function searchMovies(query) {
   try {
     const res = await axios.get(
