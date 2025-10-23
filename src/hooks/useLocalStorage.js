@@ -1,7 +1,7 @@
 export function loadFromLocalStorage() {
   try {
     const data = window.localStorage.getItem("favorites");
-    return JSON.parse(data);
+    return JSON.parse(data) || [];
   } catch (error) {
     console.error("Error loading favorites from local storage", error);
   }
