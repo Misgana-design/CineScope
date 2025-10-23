@@ -1,6 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchTrending, ORIGINAL_IMAGE_BASE_URL } from "../hooks/useTMDBApi";
+import {
+  fetchTrending,
+  trendingTv,
+  ORIGINAL_IMAGE_BASE_URL,
+} from "../hooks/useTMDBApi";
 import MovieCard from "../components/MovieCard";
+import TvCard from "../components/TvCard";
 import Footer from "../layout/Footer";
 import { useFavorites } from "../context/FavoritesContext";
 import { Link } from "react-router-dom";
@@ -20,14 +25,28 @@ export default function HomePage() {
     retry: 3,
   });
 
-  if (isLoading)
+  const {
+    data: tv = [],
+    isLoading: tvLoading,
+    error: tvError,
+    isFetching: tvFetching,
+  } = useQuery({
+    queryKey: ["Trending-tv"],
+    queryFn: trendingTv,
+    staleTime: 1000 * 60,
+    refetchOnWindowFocus: true,
+    retry: 3,
+  });
+
+  if (isLoading || tvLoading)
     return <p className="mt-30 text-white text-center text-2xl">Loading...</p>;
-  if (error)
+  if (error || tvError)
     return (
       <p className="mt-30 text-red-500 text-center text-2xl">
         Something went wrong
       </p>
     );
+
   const heroMovies = movie[0];
   const restMovies = movie;
 
@@ -74,19 +93,41 @@ export default function HomePage() {
               return (
                 <>
                   <div className="relative hover:scale-110 duration-150 hover:cursor-pointer">
-                    <Link>
-                      <MovieCard key={restMovie.id} movie={restMovie} />
-                      <button
-                        onClick={() => {
-                          favorite
-                            ? removeFromFavorites(restMovie.id)
-                            : addToFavorites(restMovie);
-                        }}
-                        className="absolute bottom-2 left-35 hover:scale-110 duration-150 bg-gradient-to-r from-blue-500 to-green-500 rounded-full hover:cursor-pointer px-3"
-                      >
-                        {favorite ? "♥" : "♡"}
-                      </button>
-                    </Link>
+                    <MovieCard key={restMovie.id} movie={restMovie} />
+                    <button
+                      onClick={() => {
+                        favorite
+                          ? removeFromFavorites(restMovie.id)
+                          : addToFavorites(restMovie);
+                      }}
+                      className="absolute bottom-2 left-35 hover:scale-110 duration-150 bg-gradient-to-r from-blue-500 to-green-500 rounded-full hover:cursor-pointer px-3"
+                    >
+                      {favorite ? "♥" : "♡"}
+                    </button>
+                  </div>
+                </>
+              );
+            })}
+          </div>
+        </div>
+        <div className="mt-50">
+          Trending TV series
+          <div className="grid grid-cols-5 w-250 gap-6 aspect-auto relative">
+            {tv.map((tvSeries) => {
+              const isFavorite = isFavorites(tvSeries);
+              return (
+                <>
+                  <div
+                    key={tvSeries.id}
+                    className="relative hover:scale-110 duration-150"
+                  >
+                    <TvCard series={tvSeries} />
+                    <button
+                      onClick={() => addToFavorites(tvSeries)}
+                      className="absolute bottom-2 right-2 bg-gradient-to-r from-blue-500 to-green-500 rounded-full px-3 hover:scale-110 duration-150"
+                    >
+                      {isFavorite ? "♥" : "♡"}
+                    </button>
                   </div>
                 </>
               );
