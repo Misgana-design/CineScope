@@ -123,7 +123,11 @@ export default function HomePage() {
                   >
                     <TvCard series={tvSeries} />
                     <button
-                      onClick={() => addToFavorites(tvSeries)}
+                      onClick={() =>
+                        isFavorite
+                          ? removeFromFavorites(tvSeries)
+                          : addToFavorites(tvSeries)
+                      }
                       className="absolute bottom-2 right-2 bg-gradient-to-r from-blue-500 to-green-500 rounded-full px-3 hover:scale-110 duration-150"
                     >
                       {isFavorite ? "♥" : "♡"}
