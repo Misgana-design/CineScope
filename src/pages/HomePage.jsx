@@ -75,7 +75,7 @@ export default function HomePage() {
                 <p className="text-white w-100 mt-4 font-mono">
                   {heroMovies.overview}
                 </p>
-                <button className="bg-green-400  cursor-pointer w-30 h-10 text-lg font-bold rounded-lg mt-4 border-solid border-2 border-green-400 hover:bg-black hover:text-white">
+                <button className="text-white  cursor-pointer w-30 h-10 text-lg font-bold rounded-lg mt-4 border-solid border-2 border-green-400 hover:bg-green-400 hover:text-black">
                   Watch now
                 </button>
               </div>
@@ -110,9 +110,9 @@ export default function HomePage() {
             })}
           </div>
         </div>
-        <div className="mt-50">
+        <div className="mt-20">
           Trending TV series
-          <div className="grid grid-cols-5 w-250 gap-6 aspect-auto relative">
+          <div className="grid grid-cols-5 w-250 gap-6 mt-5 aspect-auto relative">
             {tv.map((tvSeries) => {
               const isFavorite = isFavorites(tvSeries);
               return (
