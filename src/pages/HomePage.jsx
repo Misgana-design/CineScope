@@ -20,7 +20,7 @@ export default function HomePage() {
   } = useQuery({
     queryKey: ["Trending-movies"],
     queryFn: fetchTrending,
-    staleTime: 1000 * 60,
+    staleTime: 1000 * 20,
     refetchOnWindowFocus: true,
     retry: 3,
   });
