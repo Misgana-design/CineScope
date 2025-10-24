@@ -85,7 +85,7 @@ export default function HomePage() {
       </div>
 
       <div className="text-white font-extrabold text-4xl ml-28 mt-12">
-        Trending This Week
+        Trending movies this week
         <div>
           <div className="grid grid-cols-5 gap-6 w-250 mt-5 aspect-video">
             {restMovies.map((restMovie) => {
