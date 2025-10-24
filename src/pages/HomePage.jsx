@@ -111,7 +111,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="mt-20">
-          Trending TV series
+          Trending TV this week series
           <div className="grid grid-cols-5 w-250 gap-6 mt-5 aspect-auto relative">
             {tv.map((tvSeries) => {
               const isFavorite = isFavorites(tvSeries);
