@@ -1,6 +1,6 @@
 import { IMAGE_BASE_URL } from "../hooks/useTMDBApi";
 
-export function MovieCard({ movie }) {
+export default function MovieCard({ movie }) {
   return (
     <>
       <div>
@@ -8,12 +8,4 @@ export function MovieCard({ movie }) {
       </div>
     </>
   );
-}
-
-export function TvCard({ tvSeries }) {
-  <>
-    <div>
-      <img src={IMAGE_BASE_URL + tvSeries.poster_path} alt={tvSeries.title} />
-    </div>
-  </>;
 }
