@@ -52,7 +52,11 @@ export default function HomePage() {
 
   return (
     <>
-      {isFetching && <p>Background refreshing</p>}
+      {isFetching && (
+        <p className="mt-30 text-white text-center text-2xl">
+          Background refreshing
+        </p>
+      )}
       <div className="mt-25">
         {heroMovies && (
           <>
