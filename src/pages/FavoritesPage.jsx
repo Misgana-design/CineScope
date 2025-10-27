@@ -23,6 +23,7 @@ export default function FavoritesPage() {
               src={IMAGE_BASE_URL + favorite.poster_path}
               alt={favorite.title}
             />
+            <button>Remove from favorites</button>
           </div>
         ))}
       </div>
