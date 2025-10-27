@@ -1,5 +1,6 @@
 import { useFavorites } from "../context/FavoritesContext";
 import { IMAGE_BASE_URL } from "../hooks/useTMDBApi";
+import Footer from "../layout/Footer";
 
 export default function FavoritesPage() {
   const { favorites } = useFavorites();
@@ -24,6 +25,9 @@ export default function FavoritesPage() {
             />
           </div>
         ))}
+      </div>
+      <div className="font-extrabold">
+        <Footer />
       </div>
     </>
   );
