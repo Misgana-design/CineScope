@@ -24,7 +24,7 @@ function favoritesReducer(state, action) {
 const FavoritesContext = createContext();
 
 export function FavoritesProvider({ children }) {
-  const [favorites, dispatch] = useReducer(favoritesReducer, [], () => {
+  const [favorites, dispatch] = useReducer(favoritesReducer, undefined, () => {
     const state = loadFromLocalStorage();
     return state || [];
   });
