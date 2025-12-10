@@ -100,7 +100,7 @@ export default function HomePage() {
                     <MovieCard key={restMovie.id} movie={restMovie} />
                     <button
                       onClick={() => {
-                        favorite
+                        favorite(restMovie)
                           ? removeFromFavorites(restMovie.id)
                           : addToFavorites(restMovie);
                       }}
@@ -128,7 +128,7 @@ export default function HomePage() {
                     <TvCard series={tvSeries} />
                     <button
                       onClick={() =>
-                        isFavorite
+                        isFavorite(tvSeries)
                           ? removeFromFavorites(tvSeries)
                           : addToFavorites(tvSeries)
                       }
